@@ -94,13 +94,10 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_TrackBarValueLabel.Text = m_BlurSlider.Value.ToString();
         }
 
-        private static Bitmap Blur(Bitmap image, Int32 blurSize)
+        private Bitmap Blur(Bitmap image, Int32 blurSize)
         {
-            return Blur(image, new Rectangle(0, 0, image.Width, image.Height), blurSize);
-        }
+            Rectangle rectangle = new Rectangle(0, 0, m_ImageHandler.CurrentBitmap.Width, m_ImageHandler.CurrentBitmap.Height);
 
-        private static Bitmap Blur(Bitmap image, Rectangle rectangle, Int32 blurSize)
-        {
             Bitmap blurred = new Bitmap(image.Width, image.Height);
 
             using (Graphics graphics = Graphics.FromImage(blurred))
