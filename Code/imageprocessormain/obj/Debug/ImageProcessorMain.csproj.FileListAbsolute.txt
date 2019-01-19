@@ -17,3 +17,13 @@ D:\Users\Z003SBFA\ImageProcessorMain\ImageProcessorMain\obj\Debug\ImageProcessor
 D:\Users\Z003SBFA\ImageProcessorMain\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
 D:\Users\Z003SBFA\ImageProcessorMain\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
 D:\Users\Z003SBFA\ImageProcessorMain\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.Cache
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe.config
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.pdb
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csprojAssemblyReference.cache
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.cache
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
+D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb
