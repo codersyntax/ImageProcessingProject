@@ -12,6 +12,7 @@ namespace ImageProcessorMain
         private ImageHub m_ImageHub;
         private ImageHandler m_ImageHandler;
         private int buttonSeperator = 0;
+        private Stack<Bitmap> undoButtonStack = new Stack<Bitmap>();
 
         public Toolbar(Form mainForm, ImageHub imageHub, ImageHandler imageHandler)
         {
@@ -41,9 +42,11 @@ namespace ImageProcessorMain
                         Undo();
                         break;
                     case "Brightness":
+                        AddToUndoStack();
                         IAdjustment brightnessAdjustment = new BrightnessAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                     case "Blur":
+                        AddToUndoStack();
                         IAdjustment blurAdjustment = new BlurAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                 }
@@ -61,10 +64,24 @@ namespace ImageProcessorMain
             return button;
         }
 
+
+        private void AddToUndoStack()
+        {
+            undoButtonStack.Push(m_ImageHandler.CurrentBitmap);
+
+        }
         private void Undo()
         {
-            m_ImageHandler.CurrentBitmap = m_ImageHandler.GetPreviousVersion();
-            m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+            //m_ImageHandler.CurrentBitmap = m_ImageHandler.GetPreviousVersion();
+            try
+            {
+                m_ImageHub.CurrentImage.Image = undoButtonStack.Pop();
+
+            }
+            catch(InvalidOperationException e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
