@@ -47,7 +47,7 @@ namespace ImageProcessorMain
                         IAdjustment blurAdjustment = new BlurAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                     case "Crop":
-                        IAdjustment cropAdjustment = new CropAdjustment();
+                        IAdjustment cropAdjustment = new CropAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                 }
             }
