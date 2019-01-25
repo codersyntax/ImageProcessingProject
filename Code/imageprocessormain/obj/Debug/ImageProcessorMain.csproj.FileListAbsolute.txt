@@ -36,3 +36,13 @@ C:\Users\TDL.MCTECHDEV.005\Desktop\ImageProcessingProject\Code\ImageProcessorMai
 C:\Users\TDL.MCTECHDEV.005\Desktop\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
 C:\Users\TDL.MCTECHDEV.005\Desktop\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
 C:\Users\TDL.MCTECHDEV.005\Desktop\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.Cache
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe.config
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.pdb
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csprojResolveAssemblyReference.cache
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.Cache
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
+C:\Users\TDL.MCTECHDEV\Documents\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb

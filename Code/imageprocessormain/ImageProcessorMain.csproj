@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdjustmentComponents\BlurAdjustment.cs" />
+    <Compile Include="AdjustmentComponents\FilterAdjustment.cs" />
     <Compile Include="ImageHub.cs" />
     <Compile Include="AdjustmentComponents\BrightnessAdjustment.cs" />
     <Compile Include="AdjustmentComponents\IAdjustment.cs" />
