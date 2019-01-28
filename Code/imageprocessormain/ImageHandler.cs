@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 
 namespace ImageProcessorMain
 {
@@ -7,6 +8,8 @@ namespace ImageProcessorMain
         private string _bitmapPath;
         private Bitmap _currentBitmap;
         private Bitmap _bitmapbeforeProcessing;
+
+        public Stack<Bitmap> undoButtonStack = new Stack<Bitmap>();
 
         public Bitmap CurrentBitmap
         {
@@ -40,7 +43,20 @@ namespace ImageProcessorMain
 
         public Bitmap GetPreviousVersion()
         {
+            
             return _bitmapbeforeProcessing;
         }
+
+        public void AddBitMapToStack(Bitmap versionToAddToStack)
+        {
+            undoButtonStack.Push(versionToAddToStack);
+        }
+
+        public Bitmap PopUndoStack()
+        {
+            return undoButtonStack.Pop();
+        }
+
+
     }
 }

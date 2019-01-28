@@ -12,7 +12,7 @@ namespace ImageProcessorMain
         private ImageHub m_ImageHub;
         private ImageHandler m_ImageHandler;
         private int buttonSeperator = 0;
-        private Stack<Bitmap> undoButtonStack = new Stack<Bitmap>();
+        private bool EnableUndo = false;
 
         public Toolbar(Form mainForm, ImageHub imageHub, ImageHandler imageHandler)
         {
@@ -20,6 +20,11 @@ namespace ImageProcessorMain
             m_ImageHub = imageHub;
             m_ImageHandler = imageHandler;
             AddAdjustmentComponents();
+            AdjustUndoVisibility();
+
+            
+            
+            
         }
 
         private void AddAdjustmentComponents()
@@ -42,14 +47,21 @@ namespace ImageProcessorMain
                         Undo();
                         break;
                     case "Brightness":
-                        AddToUndoStack();
                         IAdjustment brightnessAdjustment = new BrightnessAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                     case "Blur":
-                        AddToUndoStack();
                         IAdjustment blurAdjustment = new BlurAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                 }
+                if(button.Name != "Undo")
+                {
+                    m_ImageHandler.AddBitMapToStack(m_ImageHandler.CurrentBitmap);
+                    EnableUndo = true;
+                   
+
+                }
+                AdjustUndoVisibility();
+
             }
         }
 
@@ -64,24 +76,37 @@ namespace ImageProcessorMain
             return button;
         }
 
-
-        private void AddToUndoStack()
+        private bool IsUndoEnabled()
         {
-            undoButtonStack.Push(m_ImageHandler.CurrentBitmap);
-
+            return EnableUndo;
         }
+
+        private void AdjustUndoVisibility()
+        {
+            m_MainForm.Controls.Find("Undo", true)[0].Enabled = IsUndoEnabled();
+        }
+        //private void AddToUndoStack()
+        //{
+        //    undoButtonStack.Push(m_ImageHandler.CurrentBitmap);
+
+        //}
         private void Undo()
         {
-            //m_ImageHandler.CurrentBitmap = m_ImageHandler.GetPreviousVersion();
-            try
+            //m_ImageHandler.CurrentBitmap = m_ImageHandler.PopUndoStack();
+            m_ImageHub.CurrentImage.Image = m_ImageHandler.PopUndoStack();
+            if(m_ImageHandler.undoButtonStack.Count == 0)
             {
-                m_ImageHub.CurrentImage.Image = undoButtonStack.Pop();
+                EnableUndo = false;
+            }
+            //try
+            //{
+            //    m_ImageHub.CurrentImage.Image = undoButtonStack.Pop();
 
-            }
-            catch(InvalidOperationException e)
-            {
-                Console.WriteLine(e);
-            }
+            //}
+            //catch(InvalidOperationException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
         }
     }
 }
