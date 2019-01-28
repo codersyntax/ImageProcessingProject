@@ -22,9 +22,6 @@ namespace ImageProcessorMain
             AddAdjustmentComponents();
             AdjustUndoVisibility();
 
-            
-            
-            
         }
 
         private void AddAdjustmentComponents()
@@ -56,12 +53,9 @@ namespace ImageProcessorMain
                 if(button.Name != "Undo")
                 {
                     m_ImageHandler.AddBitMapToStack(m_ImageHandler.CurrentBitmap);
-                    EnableUndo = true;
-                   
-
+                    EnableUndo = true;                
                 }
                 AdjustUndoVisibility();
-
             }
         }
 
@@ -85,28 +79,14 @@ namespace ImageProcessorMain
         {
             m_MainForm.Controls.Find("Undo", true)[0].Enabled = IsUndoEnabled();
         }
-        //private void AddToUndoStack()
-        //{
-        //    undoButtonStack.Push(m_ImageHandler.CurrentBitmap);
-
-        //}
+        
         private void Undo()
         {
-            //m_ImageHandler.CurrentBitmap = m_ImageHandler.PopUndoStack();
             m_ImageHub.CurrentImage.Image = m_ImageHandler.PopUndoStack();
             if(m_ImageHandler.undoButtonStack.Count == 0)
             {
                 EnableUndo = false;
-            }
-            //try
-            //{
-            //    m_ImageHub.CurrentImage.Image = undoButtonStack.Pop();
-
-            //}
-            //catch(InvalidOperationException e)
-            //{
-            //    Console.WriteLine(e);
-            //}
+            }            
         }
     }
 }
