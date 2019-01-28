@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//** https://docs.microsoft.com/en-us/dotnet/api/system.drawing.bitmap?view=netframework-4.7.2
+https://www.codeproject.com/Articles/9727/Image-Processing-Lab-in-C#_comments
+**\\
+
+
 namespace ImageProcessorMain.AdjustmentComponents
 {
     internal class FilterAdjustment : IAdjustment
