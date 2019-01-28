@@ -27,3 +27,13 @@ D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\I
 D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
 D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
 D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe.config
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.pdb
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csprojResolveAssemblyReference.cache
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.Cache
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
+C:\Users\Ethan\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb
