@@ -27,3 +27,13 @@ D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\I
 D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
 D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
 D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe.config
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.pdb
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csprojAssemblyReference.cache
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.cache
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
+C:\Users\mikep\OneDrive\Documentos\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb
