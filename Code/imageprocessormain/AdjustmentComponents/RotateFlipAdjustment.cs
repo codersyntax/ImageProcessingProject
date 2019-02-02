@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
-    internal class RotateFlipAdjustment : IAdjustment
+    internal class RotateFlipAdjustment
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
