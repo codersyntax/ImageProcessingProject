@@ -19,19 +19,19 @@ namespace ImageProcessorMain
 
         public Form CreateImageForm()
         {
-            Form image = new Form();
-            image.Text = m_ImageHandler.BitmapPath;
-            image.Size = new Size(m_ImageHandler.CurrentBitmap.Width, m_ImageHandler.CurrentBitmap.Height);
-            image.StartPosition = FormStartPosition.Manual;
-            image.Location = new Point(136, 0);
-            image.FormBorderStyle = FormBorderStyle.FixedSingle;
-            image.ShowIcon = false;
-            image.BackColor = Color.DarkGray;
+            m_Image = new Form();
+            m_Image.Text = m_ImageHandler.BitmapPath;
+            m_Image.Size = new Size(m_ImageHandler.CurrentBitmap.Width, m_ImageHandler.CurrentBitmap.Height);
+            m_Image.StartPosition = FormStartPosition.Manual;
+            m_Image.Location = new Point(136, 0);
+            m_Image.FormBorderStyle = FormBorderStyle.FixedSingle;
+            m_Image.ShowIcon = false;
+            m_Image.BackColor = Color.DarkGray;
             CreateImageContainer();
-            image.Controls.Add(CurrentImage);
-            image.FormClosed += new FormClosedEventHandler(onImageClose);
-            image.Show();
-            return image;
+            m_Image.Controls.Add(CurrentImage);
+            m_Image.FormClosed += new FormClosedEventHandler(onImageClose);
+            m_Image.Show();
+            return m_Image;
         }
 
         private void onImageClose(object sender, EventArgs e)

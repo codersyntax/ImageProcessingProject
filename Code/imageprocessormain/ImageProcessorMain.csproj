@@ -49,7 +49,6 @@
     <Compile Include="AdjustmentComponents\CropAdjustment.cs" />
     <Compile Include="ImageHub.cs" />
     <Compile Include="AdjustmentComponents\BrightnessAdjustment.cs" />
-    <Compile Include="AdjustmentComponents\IAdjustment.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
