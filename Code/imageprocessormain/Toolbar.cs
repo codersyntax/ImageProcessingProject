@@ -41,10 +41,13 @@ namespace ImageProcessorMain
                         Undo();
                         break;
                     case "Brightness":
-                        IAdjustment brightnessAdjustment = new BrightnessAdjustment(m_ImageHandler, m_ImageHub);
+                        new BrightnessAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                     case "Blur":
-                        IAdjustment blurAdjustment = new BlurAdjustment(m_ImageHandler, m_ImageHub);
+                        new BlurAdjustment(m_ImageHandler, m_ImageHub);
+                        break;
+                    case "Resize":
+                        new ResizeAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                 }
             }
