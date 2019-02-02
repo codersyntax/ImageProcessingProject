@@ -47,10 +47,8 @@
   <ItemGroup>
     <Compile Include="AdjustmentComponents\BlurAdjustment.cs" />
     <Compile Include="AdjustmentComponents\ContrastAdjustment.cs" />
-    <Compile Include="AdjustmentComponents\GaussianBlurAdjustment.cs" />
     <Compile Include="ImageHub.cs" />
     <Compile Include="AdjustmentComponents\BrightnessAdjustment.cs" />
-    <Compile Include="AdjustmentComponents\IAdjustment.cs" />
     <Compile Include="Constants\Constants.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

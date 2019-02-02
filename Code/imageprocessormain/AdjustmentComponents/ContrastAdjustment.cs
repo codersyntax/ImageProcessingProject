@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
-    internal class ContrastAdjustment : IAdjustment
+    internal class ContrastAdjustment
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
