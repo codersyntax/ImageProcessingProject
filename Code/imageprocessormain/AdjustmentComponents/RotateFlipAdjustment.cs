@@ -14,7 +14,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         private ImageHub m_ImageHub;
         private Form m_RotateDialog;
         private TrackBar m_RotateSlider;
-        private Label m_TrackBarValueLabel;
+        private ComboBox m_FlipCombobox;
         private Button m_OkButton;
         public RotateFlipAdjustment(ImageHandler imageHandler, ImageHub imageHub)
         {
@@ -39,11 +39,10 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_RotateDialog.StartPosition = FormStartPosition.CenterScreen;
             m_RotateDialog.Size = new Size(200, 200);
             CreateDialogTrackBar();
-            CreateDialogTrackbarLabel();
             CreateDialogOkButton();
+            CreateFlipCombobox();
             m_RotateDialog.Controls.Add(m_RotateSlider);
-            m_RotateDialog.Controls.Add(m_TrackBarValueLabel);
-            m_RotateDialog.Controls.Add(m_OkButton);
+            m_RotateDialog.Controls.Add(m_FlipCombobox);
             m_RotateDialog.Show();
             return m_RotateDialog;
         }
@@ -55,12 +54,27 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_RotateSlider.Maximum = 255;
             m_RotateSlider.Minimum = -255;
             m_RotateSlider.TickFrequency = 50;
-            m_RotateSlider.ValueChanged += new EventHandler(onRotateSliderValueChanged);
+            
         }
+      
 
-        public void UpdateImage()
+            public void UpdateImage()
+            {
+                m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+            }
+        private ComboBox CreateFlipCombobox()
         {
-            throw new NotImplementedException();
+            m_FlipCombobox = new ComboBox();
+            m_FlipCombobox.Items.Add("Vertical");
+            m_FlipCombobox.Items.Add("Horizontal");
+            return m_FlipCombobox;
+        }
+        private void CreateDialogOkButton()
+        {
+            m_OkButton = new Button();
+            m_OkButton.Left = (m_RotateDialog.Width - m_OkButton.Width) / 2;
+            m_OkButton.Top = ((m_RotateDialog.Height - m_OkButton.Height) / 2) + 40;
+            m_OkButton.Text = Constants.OkButtonText;
         }
     }
 }
