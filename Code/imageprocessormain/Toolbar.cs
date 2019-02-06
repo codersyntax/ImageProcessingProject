@@ -26,7 +26,7 @@ namespace ImageProcessorMain
 
         private void AddAdjustmentComponents()
         {
-            List<string> m_Adjustments = new List<string> { "Undo", "Brightness", "Blur" };
+            List<string> m_Adjustments = new List<string> { "Undo", "Brightness", "Blur","Contrast" };
             foreach(string adjustment in m_Adjustments)
             {
                 m_MainForm.Controls.Add(createButton(adjustment));
@@ -48,6 +48,9 @@ namespace ImageProcessorMain
                         break;
                     case "Blur":
                         new BlurAdjustment(m_ImageHandler, m_ImageHub);
+                        break;
+                    case "Contrast":
+                        new ContrastAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                 }
                 if(button.Name != "Undo")
