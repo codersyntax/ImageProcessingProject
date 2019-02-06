@@ -148,13 +148,11 @@ namespace ImageProcessorMain.AdjustmentComponents
                 pixelBuffer[k + 1] = (byte)green;
                 pixelBuffer[k + 2] = (byte)red;
             }
-
             Bitmap resultBitmap = new Bitmap(sourceBitmap.Width, sourceBitmap.Height);
 
             BitmapData resultData = resultBitmap.LockBits(new Rectangle(0, 0,
                                         resultBitmap.Width, resultBitmap.Height),
                                         ImageLockMode.WriteOnly, PixelFormat.Format32bppArgb);
-
             Marshal.Copy(pixelBuffer, 0, resultData.Scan0, pixelBuffer.Length);
             resultBitmap.UnlockBits(resultData);
 
