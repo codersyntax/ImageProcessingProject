@@ -6,7 +6,7 @@ namespace ImageProcessorMain.AdjustmentComponents
     {
         Form ShowDialog();
 
-        void AdjustImage(int amount);
+        void AdjustImage();
 
         void UpdateImage();
     }

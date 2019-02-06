@@ -40,7 +40,7 @@ namespace ImageProcessorMain.AdjustmentComponents
             return m_BrightnessDialog;
         }
 
-        public void AdjustImage(int brightness)
+        public void AdjustImage()
         {
             Cursor.Current = Cursors.WaitCursor;
             Bitmap temp = (Bitmap)m_ImageHandler.CurrentBitmap;
@@ -119,7 +119,7 @@ namespace ImageProcessorMain.AdjustmentComponents
 
         private void onOkButtonClicked(object sender, EventArgs e)
         {
-            AdjustImage(m_BrightnessSlider.Value);
+            AdjustImage();
             m_BrightnessDialog.Dispose();
         }
 

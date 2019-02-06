@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdjustmentComponents\BlurAdjustment.cs" />
+    <Compile Include="AdjustmentComponents\ResizeImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdjustmentComponents\ResizeImage.Designer.cs">
+      <DependentUpon>ResizeImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdjustmentComponents\ResizeAdjustment.cs" />
     <Compile Include="ImageHub.cs" />
     <Compile Include="AdjustmentComponents\BrightnessAdjustment.cs" />
@@ -61,6 +67,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Toolbar.cs" />
+    <EmbeddedResource Include="AdjustmentComponents\ResizeImage.resx">
+      <DependentUpon>ResizeImage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

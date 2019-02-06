@@ -34,3 +34,4 @@ C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\Im
 C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
 C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
 C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb
+C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.AdjustmentComponents.ResizeImage.resources

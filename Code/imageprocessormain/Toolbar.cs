@@ -46,6 +46,9 @@ namespace ImageProcessorMain
                     case "Blur":
                         IAdjustment blurAdjustment = new BlurAdjustment(m_ImageHandler, m_ImageHub);
                         break;
+                    case "Resize":
+                        IAdjustment resideAdjustment = new ResizeAdjustment();
+                        break;
                 }
             }
         }
