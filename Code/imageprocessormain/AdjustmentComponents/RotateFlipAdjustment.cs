@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
-    internal class RotateFlipAdjustment : IAdjustment
+    internal class RotateFlipAdjustment
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
@@ -43,6 +39,7 @@ namespace ImageProcessorMain.AdjustmentComponents
             CreateFlipCombobox();
             m_RotateDialog.Controls.Add(m_RotateSlider);
             m_RotateDialog.Controls.Add(m_FlipCombobox);
+            m_RotateDialog.Controls.Add(m_OkButton);
             m_RotateDialog.Show();
             return m_RotateDialog;
         }
@@ -69,12 +66,20 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_FlipCombobox.Items.Add("Horizontal");
             return m_FlipCombobox;
         }
+       
         private void CreateDialogOkButton()
         {
             m_OkButton = new Button();
             m_OkButton.Left = (m_RotateDialog.Width - m_OkButton.Width) / 2;
             m_OkButton.Top = ((m_RotateDialog.Height - m_OkButton.Height) / 2) + 40;
             m_OkButton.Text = Constants.OkButtonText;
+            m_OkButton.Click += new EventHandler(onOkButtonClicked);
+        }
+
+        private void onOkButtonClicked(object sender, EventArgs e)
+        {
+            AdjustImage(m_RotateSlider.Value);
+            m_RotateDialog.Dispose();
         }
     }
 }
