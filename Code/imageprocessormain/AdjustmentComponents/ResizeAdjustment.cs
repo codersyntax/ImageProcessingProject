@@ -5,7 +5,7 @@ using System.Drawing;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
-    internal class ResizeAdjustment
+    internal class ResizeAdjustment : IAdjustment
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
