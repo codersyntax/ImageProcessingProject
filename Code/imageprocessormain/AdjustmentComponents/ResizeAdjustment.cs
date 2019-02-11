@@ -9,7 +9,10 @@ namespace ImageProcessorMain.AdjustmentComponents
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
+        private Form m_ResizeDialog;
+        private Button m_OkButton;
 
+        
         internal ResizeAdjustment(ImageHandler imageHandler, ImageHub imageHub)
         {
             m_ImageHandler = imageHandler;
@@ -19,8 +22,20 @@ namespace ImageProcessorMain.AdjustmentComponents
 
         public Form ShowDialog()
         {
-            //Focus on making this
-            throw new NotImplementedException();
+            //<summary> new form dialog </summary>
+            m_ResizeDialog = new Form();
+            m_ResizeDialog.Text = "Adjust Size";
+            m_ResizeDialog.ShowIcon = false;
+            m_ResizeDialog.ShowInTaskbar = false;
+            m_ResizeDialog.MinimizeBox = false;
+            m_ResizeDialog.MaximizeBox = false;
+            m_ResizeDialog.StartPosition = FormStartPosition.CenterScreen;
+            m_ResizeDialog.Size = new Size(200,200);
+            m_ResizeDialog.Show();
+            m_ResizeDialog.Controls.Add(m_OkButton);
+
+
+            return m_ResizeDialog;
         }
 
         public void AdjustImage(int width, int height)
@@ -98,6 +113,21 @@ namespace ImageProcessorMain.AdjustmentComponents
         public void UpdateImage()
         {
             m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+        }
+
+        private void CreateDialogOkButton()
+        {
+            m_OkButton = new Button();
+            m_OkButton.Left = (m_ResizeDialog.Width - m_OkButton.Width) / 2;
+            m_OkButton.Top = ((m_ResizeDialog.Height - m_OkButton.Height) / 2) + 40;
+            m_OkButton.Text = Constants.OkButtonText;
+            m_OkButton.Click += new EventHandler(OnOkButtonClicked);
+        }
+
+        private void OnOkButtonClicked(object sender, EventArgs e)
+        {
+            AdjustImage();
+            m_ResizeDialog.Dispose();
         }
     }
 }
