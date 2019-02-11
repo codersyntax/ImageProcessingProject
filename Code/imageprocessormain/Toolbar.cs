@@ -49,9 +49,7 @@ namespace ImageProcessorMain
                     case "Resize":
                         new ResizeAdjustment(m_ImageHandler, m_ImageHub);
                         break;
-                    case "Resize":
-                        IAdjustment resideAdjustment = new ResizeAdjustment();
-                        break;
+                    
                 }
             }
         }
