@@ -12,6 +12,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         private Form m_CropDialog;
         private Label m_TrackBarValueLabel;
         private Button m_OkButton;
+        private Label m_label = new Label();
         private Bitmap image;
         private PictureBox picBox;
         private Rectangle selection;
@@ -34,7 +35,11 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_CropDialog.MaximizeBox = false;
             m_CropDialog.StartPosition = FormStartPosition.CenterScreen;
             m_CropDialog.Size = new Size(200, 200);
-         
+
+
+            m_CropDialog.Controls.Add(m_label);
+            m_label.Text = "Test";
+
             CreateDialogOkButton();
             m_CropDialog.Controls.Add(m_OkButton);
             m_CropDialog.Show();
@@ -86,9 +91,6 @@ namespace ImageProcessorMain.AdjustmentComponents
         }
     }
 }
-
-
-
 
 
 
