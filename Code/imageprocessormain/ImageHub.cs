@@ -31,7 +31,29 @@ namespace ImageProcessorMain
             image.Controls.Add(CurrentImage);
             image.FormClosed += new FormClosedEventHandler(onImageClose);
             image.Show();
+            m_Image = image;
             return image;
+        }
+
+        private void onZoomClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (CurrentImage.Width > 40 && CurrentImage.Height > 40)
+                {
+                    m_Image.Width = Convert.ToInt32(m_Image.Width * 0.95);
+                    m_Image.Height = Convert.ToInt32(m_Image.Height * 0.95);
+                    m_Image.Refresh();
+                    CurrentImage.Update();
+                }
+            }
+            if(e.Button == MouseButtons.Left)
+            {
+                m_Image.Width = Convert.ToInt32(m_Image.Width * 1.05);
+                m_Image.Height = Convert.ToInt32(m_Image.Height * 1.05);
+                m_Image.Refresh();
+                CurrentImage.Update();
+            }
         }
 
         private void onImageClose(object sender, EventArgs e)
@@ -44,6 +66,8 @@ namespace ImageProcessorMain
             CurrentImage = new PictureBox();
             CurrentImage.Dock = DockStyle.Fill;
             CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+            CurrentImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            CurrentImage.MouseUp += onZoomClick;
         }
     }
 }

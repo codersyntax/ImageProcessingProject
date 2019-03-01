@@ -21,7 +21,6 @@ namespace ImageProcessorMain
             m_ImageHandler = imageHandler;
             AddAdjustmentComponents();
             AdjustUndoVisibility();
-
         }
 
         private void AddAdjustmentComponents()
