@@ -25,7 +25,7 @@ namespace ImageProcessorMain
 
         private void AddAdjustmentComponents()
         {
-            List<string> m_Adjustments = new List<string> { "Undo", "Brightness", "Blur","Contrast" };
+            List<string> m_Adjustments = new List<string> { "Undo", "Zoom", "Brightness", "Blur","Contrast" };
             foreach(string adjustment in m_Adjustments)
             {
                 m_MainForm.Controls.Add(createButton(adjustment));
@@ -37,10 +37,14 @@ namespace ImageProcessorMain
             Button button = sender as Button;
             if (button != null)
             {
+                m_ImageHub.ZoomEnabled = false;
                 switch (button.Name)
                 {
                     case "Undo":
                         Undo();
+                        break;
+                    case "Zoom":
+                        m_ImageHub.ZoomEnabled = true;
                         break;
                     case "Brightness":
                         new BrightnessAdjustment(m_ImageHandler, m_ImageHub);

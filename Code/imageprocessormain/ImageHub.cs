@@ -10,6 +10,7 @@ namespace ImageProcessorMain
         private ImageHandler m_ImageHandler;
         public Form m_Image;
         public PictureBox CurrentImage;
+        public bool ZoomEnabled = false;
 
         public ImageHub(Form mainForm, ImageHandler imageHandler)
         {
@@ -37,22 +38,25 @@ namespace ImageProcessorMain
 
         private void onZoomClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
+            if (ZoomEnabled)
             {
-                if (CurrentImage.Width > 40 && CurrentImage.Height > 40)
+                if (e.Button == MouseButtons.Right)
                 {
-                    m_Image.Width = Convert.ToInt32(m_Image.Width * 0.95);
-                    m_Image.Height = Convert.ToInt32(m_Image.Height * 0.95);
+                    if (CurrentImage.Width > 40 && CurrentImage.Height > 40)
+                    {
+                        m_Image.Width = Convert.ToInt32(m_Image.Width * 0.95);
+                        m_Image.Height = Convert.ToInt32(m_Image.Height * 0.95);
+                        m_Image.Refresh();
+                        CurrentImage.Update();
+                    }
+                }
+                if (e.Button == MouseButtons.Left)
+                {
+                    m_Image.Width = Convert.ToInt32(m_Image.Width * 1.05);
+                    m_Image.Height = Convert.ToInt32(m_Image.Height * 1.05);
                     m_Image.Refresh();
                     CurrentImage.Update();
                 }
-            }
-            if(e.Button == MouseButtons.Left)
-            {
-                m_Image.Width = Convert.ToInt32(m_Image.Width * 1.05);
-                m_Image.Height = Convert.ToInt32(m_Image.Height * 1.05);
-                m_Image.Refresh();
-                CurrentImage.Update();
             }
         }
 
