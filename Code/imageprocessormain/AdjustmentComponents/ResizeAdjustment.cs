@@ -37,7 +37,7 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_ResizeDialog.MinimizeBox = false;
             m_ResizeDialog.MaximizeBox = false;
             m_ResizeDialog.StartPosition = FormStartPosition.CenterScreen;
-            m_ResizeDialog.Size = new Size(400,400);
+            m_ResizeDialog.Size = new Size(200,200);
             CreateDialogOkButton();
             CreateWidthTextBox();
             CreateHeightTextBox();
@@ -143,7 +143,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         private void CreateWidthTextBox()
         {
             m_WidthTextBox = new TextBox();
-            m_WidthTextBox.Left = (m_ResizeDialog.Width - m_OkButton.Width) / 2;
+            m_WidthTextBox.Left = m_ResizeDialog.Width - 135;
             m_WidthTextBox.Top = ((m_ResizeDialog.Height - m_OkButton.Height) / 2) - 40;
             
         }
@@ -152,17 +152,15 @@ namespace ImageProcessorMain.AdjustmentComponents
         {
             m_WidthLabel = new Label();
             m_WidthLabel.Text = "Width";
-            m_WidthLabel.Left = ((m_WidthLabel.Width - m_OkButton.Width) / 3);
-            m_WidthTextBox.Top = ((m_ResizeDialog.Height - m_OkButton.Height) / 2) - 40;
-            
-            
+            m_WidthLabel.Left = 10;
+            m_WidthLabel.Top = ((m_ResizeDialog.Height - m_OkButton.Height) / 2) - 40;
         }
 
         
         private void CreateHeightTextBox()
         {
             m_HeightTextBox = new TextBox();
-            m_HeightTextBox.Left = (m_ResizeDialog.Width - m_OkButton.Width) / 2;
+            m_HeightTextBox.Left = m_ResizeDialog.Width - 135;
             m_HeightTextBox.Top = ((m_ResizeDialog.Height - m_OkButton.Height) / 2);
         }
 
@@ -170,18 +168,16 @@ namespace ImageProcessorMain.AdjustmentComponents
         {
             m_HeightLabel = new Label();
             m_HeightLabel.Text = "Height";
-            m_HeightLabel.Left = ((m_ResizeDialog.Height - m_OkButton.Height) / 3);
-            m_HeightLabel.Left = ((m_ResizeDialog.Height - m_OkButton.Height) / 2) - 40;
-
-
-           
-
+            m_HeightLabel.Left = 10;
+            m_HeightLabel.Top = ((m_ResizeDialog.Height - m_OkButton.Height) / 2);
         }
 
         private void OnOkButtonClicked(object sender, EventArgs e)
         {
-            w_textBox = Convert.ToInt32(m_WidthTextBox.Text);
-            h_textBox = Convert.ToInt32(m_HeightTextBox.Text);
+            m_WidthTextBox.Text = m_WidthTextBox.Text.Split('.')[0];
+            m_HeightTextBox.Text = m_HeightTextBox.Text.Split('.')[0];
+            w_textBox = Int32.Parse(m_WidthTextBox.Text);
+            h_textBox = Int32.Parse(m_HeightTextBox.Text);
             AdjustImage(w_textBox, h_textBox);
             UpdateImage();
             m_ResizeDialog.Dispose();
