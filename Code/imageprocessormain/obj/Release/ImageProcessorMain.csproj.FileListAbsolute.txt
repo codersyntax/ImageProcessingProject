@@ -1,0 +1,4 @@
+C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Release\ImageProcessorMain.MainForm.resources
+C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Release\ImageProcessorMain.Properties.Resources.resources
+C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Release\ImageProcessorMain.csproj.GenerateResource.cache
+C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Release\ImageProcessorMain.csproj.CoreCompileInputs.cache

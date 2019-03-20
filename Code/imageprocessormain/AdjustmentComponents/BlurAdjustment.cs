@@ -19,8 +19,9 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_ImageHub = imageHub;
             ShowDialog();
         }
-        public void AdjustImage(int amount)
+        public void AdjustImage()
         {
+
             Cursor.Current = Cursors.WaitCursor;
             Bitmap blurredImage = Blur(m_ImageHandler.CurrentBitmap, m_BlurSlider.Value);
             m_ImageHandler.SetPreviousVersion();
@@ -85,7 +86,7 @@ namespace ImageProcessorMain.AdjustmentComponents
 
         private void onOkButtonClicked(object sender, EventArgs e)
         {
-            AdjustImage(m_BlurSlider.Value);
+            AdjustImage();
             m_BlurDialog.Dispose();
         }
 
