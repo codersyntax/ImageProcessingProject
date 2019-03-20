@@ -30,7 +30,6 @@ D:\ImageProcessorMain\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\I
 C:\Users\TDL\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe.config
 C:\Users\TDL\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe
 C:\Users\TDL\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.pdb
-C:\Users\TDL\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csprojAssemblyReference.cache
 C:\Users\TDL\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
 C:\Users\TDL\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
 C:\Users\TDL\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.cache
@@ -47,13 +46,3 @@ C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\Im
 C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe.config
 C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe
 C:\Users\daveo\OneDrive\Pictures\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.pdb
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe.config
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.exe
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\bin\Debug\ImageProcessorMain.pdb
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csprojAssemblyReference.cache
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.MainForm.resources
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.Properties.Resources.resources
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.GenerateResource.cache
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.csproj.CoreCompileInputs.cache
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.exe
-C:\Users\tdl\Documents\GitHub\ImageProcessingProject\Code\ImageProcessorMain\obj\Debug\ImageProcessorMain.pdb

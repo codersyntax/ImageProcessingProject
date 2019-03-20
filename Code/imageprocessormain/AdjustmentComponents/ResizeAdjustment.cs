@@ -129,6 +129,8 @@ namespace ImageProcessorMain.AdjustmentComponents
         public void UpdateImage()
         {
             m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+            m_ImageHub.m_Image.Width = m_ImageHub.CurrentImage.Image.Width;
+            m_ImageHub.m_Image.Height = m_ImageHub.CurrentImage.Image.Height;
         }
 
         private void CreateDialogOkButton()
