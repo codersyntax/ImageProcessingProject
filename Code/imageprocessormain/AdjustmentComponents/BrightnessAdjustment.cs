@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
-    internal class BrightnessAdjustment : IAdjustment
+    internal class BrightnessAdjustment
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
@@ -40,7 +40,7 @@ namespace ImageProcessorMain.AdjustmentComponents
             return m_BrightnessDialog;
         }
 
-        public void AdjustImage()
+        public void AdjustImage(int brightness)
         {
             Cursor.Current = Cursors.WaitCursor;
             Bitmap temp = (Bitmap)m_ImageHandler.CurrentBitmap;
@@ -119,7 +119,7 @@ namespace ImageProcessorMain.AdjustmentComponents
 
         private void onOkButtonClicked(object sender, EventArgs e)
         {
-            AdjustImage();
+            AdjustImage(m_BrightnessSlider.Value);
             m_BrightnessDialog.Dispose();
         }
 
