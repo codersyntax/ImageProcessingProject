@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
@@ -9,9 +12,9 @@ namespace ImageProcessorMain.AdjustmentComponents
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
         private Form m_RotateDialog;
-        private TrackBar m_RotateSlider;
-        private ComboBox m_FlipCombobox;
-        private Button m_OkButton;
+        private Button m_RotateButton;
+        
+        private TextBox m_AngleTextbox; 
         public RotateFlipAdjustment(ImageHandler imageHandler, ImageHub imageHub)
         {
             m_ImageHandler = imageHandler;
@@ -19,9 +22,41 @@ namespace ImageProcessorMain.AdjustmentComponents
             ShowDialog();
         }
 
-        public void AdjustImage(int amount)
+        public void AdjustImage(float angle)
         {
-            throw new NotImplementedException();
+            Bitmap temp = (Bitmap)m_ImageHandler.CurrentBitmap;
+            Bitmap bmap = (Bitmap)temp.Clone();
+            Matrix rotate_at_origin = new Matrix();
+            rotate_at_origin.Rotate(angle);
+            PointF[] points =
+             {
+                new PointF(0, 0),
+                new PointF(temp.Width, 0),
+                new PointF(temp.Width, temp.Height),
+                new PointF(0, temp.Height),
+            };
+            rotate_at_origin.TransformPoints(points);
+            int wid = temp.Width;
+            int hgt = temp.Height;
+            bmap = new Bitmap(wid, hgt);
+            Matrix rotate_at_center = new Matrix();
+            rotate_at_center.RotateAt(angle,
+                new PointF(wid / 2f, hgt / 2f));
+            using (Graphics gr = Graphics.FromImage(bmap))
+            {
+                gr.InterpolationMode = InterpolationMode.High;
+                gr.Clear(bmap.GetPixel(0, 0));
+                gr.Transform = rotate_at_center;
+                int x = (wid - bmap.Width) / 2;
+                int y = (hgt - bmap.Height) / 2;
+                gr.DrawImage(bmap, x, y);
+
+            }
+            m_ImageHandler.SetPreviousVersion();
+            m_ImageHandler.CurrentBitmap = bmap;
+            UpdateImage();
+
+
         }
 
         public Form ShowDialog()
@@ -34,52 +69,42 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_RotateDialog.MaximizeBox = false;
             m_RotateDialog.StartPosition = FormStartPosition.CenterScreen;
             m_RotateDialog.Size = new Size(200, 200);
-            CreateDialogTrackBar();
-            CreateDialogOkButton();
-            CreateFlipCombobox();
-            m_RotateDialog.Controls.Add(m_RotateSlider);
-            m_RotateDialog.Controls.Add(m_FlipCombobox);
-            m_RotateDialog.Controls.Add(m_OkButton);
+            CreateDialogRotateButton();
+           
+            m_AngleTextbox = new TextBox();
+            m_RotateDialog.Controls.Add(m_AngleTextbox);
+            m_RotateDialog.Controls.Add(m_RotateButton);
             m_RotateDialog.Show();
             return m_RotateDialog;
         }
-        private void CreateDialogTrackBar()
-        {
-            m_RotateSlider = new TrackBar();
-            m_RotateSlider.Left = (m_RotateDialog.Width - m_RotateSlider.Width) / 2;
-            m_RotateSlider.Top = ((m_RotateDialog.Height - m_RotateSlider.Height) / 2) - 40;
-            m_RotateSlider.Maximum = 255;
-            m_RotateSlider.Minimum = -255;
-            m_RotateSlider.TickFrequency = 50;
+        
             
-        }
+        
       
 
             public void UpdateImage()
             {
                 m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
             }
-        private ComboBox CreateFlipCombobox()
-        {
-            m_FlipCombobox = new ComboBox();
-            m_FlipCombobox.Items.Add("Vertical");
-            m_FlipCombobox.Items.Add("Horizontal");
-            return m_FlipCombobox;
-        }
        
-        private void CreateDialogOkButton()
+        private void CreateDialogRotateButton()
         {
-            m_OkButton = new Button();
-            m_OkButton.Left = (m_RotateDialog.Width - m_OkButton.Width) / 2;
-            m_OkButton.Top = ((m_RotateDialog.Height - m_OkButton.Height) / 2) + 40;
-            m_OkButton.Text = Constants.OkButtonText;
-            m_OkButton.Click += new EventHandler(onOkButtonClicked);
+            m_RotateButton = new Button();
+            m_RotateButton.Left = (m_RotateDialog.Width - m_RotateButton.Width) / 2;
+            m_RotateButton.Top = ((m_RotateDialog.Height - m_RotateButton.Height) / 2) + 40;
+            m_RotateButton.Text = Constants.OkButtonText;
+            m_RotateButton.Click += new EventHandler(onOkButtonClicked);
         }
 
         private void onOkButtonClicked(object sender, EventArgs e)
         {
-            AdjustImage(m_RotateSlider.Value);
+            float angle = float.Parse(m_AngleTextbox.Text);
+            AdjustImage(angle);
+            UpdateImage();
             m_RotateDialog.Dispose();
+
+
         }
+      
     }
 }
