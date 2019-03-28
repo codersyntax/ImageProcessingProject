@@ -25,9 +25,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         public void AdjustImage(float angle)
         {
             Bitmap temp = (Bitmap)m_ImageHandler.CurrentBitmap;
-            Bitmap bmap = (Bitmap)temp.Clone();
-            Matrix rotate_at_origin = new Matrix();
-            rotate_at_origin.Rotate(angle);
+            Bitmap bmap;
             PointF[] points =
              {
                 new PointF(0, 0),
@@ -35,7 +33,6 @@ namespace ImageProcessorMain.AdjustmentComponents
                 new PointF(temp.Width, temp.Height),
                 new PointF(0, temp.Height),
             };
-            rotate_at_origin.TransformPoints(points);
             int wid = temp.Width;
             int hgt = temp.Height;
             bmap = new Bitmap(wid, hgt);
@@ -45,10 +42,10 @@ namespace ImageProcessorMain.AdjustmentComponents
             using (Graphics gr = Graphics.FromImage(bmap))
             {
                 gr.InterpolationMode = InterpolationMode.High;
-                gr.Clear(bmap.GetPixel(0, 0));
+                gr.Clear(temp.GetPixel(0, 0));
                 gr.Transform = rotate_at_center;
-                int x = (wid - bmap.Width) / 2;
-                int y = (hgt - bmap.Height) / 2;
+                int x = (wid - temp.Width) / 2;
+                int y = (hgt - temp.Height) / 2;
                 gr.DrawImage(bmap, x, y);
 
             }
