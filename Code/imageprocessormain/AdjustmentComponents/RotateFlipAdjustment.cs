@@ -10,7 +10,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         private ImageHub m_ImageHub;
         private Form m_RotateDialog;
         private Button m_RotateButton;
-        
+        private Label m_RotateFlipLabel; 
         private ListBox m_RotateFlipOptionsListBox; 
         public RotateFlipAdjustment(ImageHandler imageHandler, ImageHub imageHub)
         {
@@ -37,8 +37,9 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_RotateDialog.MinimizeBox = false;
             m_RotateDialog.MaximizeBox = false;
             m_RotateDialog.StartPosition = FormStartPosition.CenterScreen;
-            m_RotateDialog.Size = new Size(200, 200);
+            m_RotateDialog.Size = new Size(400, 400);
             CreateDialogRotateButton();
+            CreateDialogRotateLabel();
             m_RotateFlipOptionsListBox = new ListBox();
             foreach (string option in Enum.GetNames(typeof(RotateFlipType)))
             {
@@ -46,6 +47,7 @@ namespace ImageProcessorMain.AdjustmentComponents
             }
             m_RotateDialog.Controls.Add(m_RotateFlipOptionsListBox);
             m_RotateDialog.Controls.Add(m_RotateButton);
+            m_RotateDialog.Controls.Add(m_RotateFlipLabel); 
             m_RotateDialog.Show();
             return m_RotateDialog;
         }
@@ -68,12 +70,22 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_RotateButton.Click += new EventHandler(onOkButtonClicked);
         }
 
+        private void CreateDialogRotateLabel()
+        {
+            m_RotateFlipLabel = new Label();
+            m_RotateFlipLabel.Left = (m_RotateDialog.Width - m_RotateFlipLabel.Width) / 2;
+            m_RotateFlipLabel.Top = ((m_RotateDialog.Height - m_RotateFlipLabel.Height) / 2) + 10;
+            m_RotateFlipLabel.Text = "Select Rotation Type";
+        }
+
         private void onOkButtonClicked(object sender, EventArgs e)
         {
             var flipType = (RotateFlipType)Enum.Parse(typeof(RotateFlipType), m_RotateFlipOptionsListBox.SelectedItem.ToString());
             AdjustImage(flipType);
             m_RotateDialog.Dispose();
         }
+
+        
       
     }
 }
