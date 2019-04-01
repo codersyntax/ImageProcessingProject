@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
-using System.IO;
-using System.Drawing.Imaging;
-using System.Drawing.Drawing2D;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
@@ -14,7 +11,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         private Form m_RotateDialog;
         private Button m_RotateButton;
         
-        private TextBox m_AngleTextbox; 
+        private ListBox m_RotateFlipOptionsListBox; 
         public RotateFlipAdjustment(ImageHandler imageHandler, ImageHub imageHub)
         {
             m_ImageHandler = imageHandler;
@@ -22,38 +19,13 @@ namespace ImageProcessorMain.AdjustmentComponents
             ShowDialog();
         }
 
-        public void AdjustImage(float angle)
+        public void AdjustImage(RotateFlipType rotFlipType)
         {
             Bitmap temp = (Bitmap)m_ImageHandler.CurrentBitmap;
-            Bitmap bmap;
-            PointF[] points =
-             {
-                new PointF(0, 0),
-                new PointF(temp.Width, 0),
-                new PointF(temp.Width, temp.Height),
-                new PointF(0, temp.Height),
-            };
-            int wid = temp.Width;
-            int hgt = temp.Height;
-            bmap = new Bitmap(wid, hgt);
-            Matrix rotate_at_center = new Matrix();
-            rotate_at_center.RotateAt(angle,
-                new PointF(wid / 2f, hgt / 2f));
-            using (Graphics gr = Graphics.FromImage(bmap))
-            {
-                gr.InterpolationMode = InterpolationMode.High;
-                gr.Clear(temp.GetPixel(0, 0));
-                gr.Transform = rotate_at_center;
-                int x = (wid - temp.Width) / 2;
-                int y = (hgt - temp.Height) / 2;
-                gr.DrawImage(bmap, x, y);
-
-            }
+            temp.RotateFlip(rotFlipType);
             m_ImageHandler.SetPreviousVersion();
-            m_ImageHandler.CurrentBitmap = bmap;
+            m_ImageHandler.CurrentBitmap = temp;
             UpdateImage();
-
-
         }
 
         public Form ShowDialog()
@@ -67,9 +39,12 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_RotateDialog.StartPosition = FormStartPosition.CenterScreen;
             m_RotateDialog.Size = new Size(200, 200);
             CreateDialogRotateButton();
-           
-            m_AngleTextbox = new TextBox();
-            m_RotateDialog.Controls.Add(m_AngleTextbox);
+            m_RotateFlipOptionsListBox = new ListBox();
+            foreach (string option in Enum.GetNames(typeof(RotateFlipType)))
+            {
+                m_RotateFlipOptionsListBox.Items.Add(option);
+            }
+            m_RotateDialog.Controls.Add(m_RotateFlipOptionsListBox);
             m_RotateDialog.Controls.Add(m_RotateButton);
             m_RotateDialog.Show();
             return m_RotateDialog;
@@ -79,10 +54,10 @@ namespace ImageProcessorMain.AdjustmentComponents
         
       
 
-            public void UpdateImage()
-            {
-                m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
-            }
+        public void UpdateImage()
+        {
+            m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+        }
        
         private void CreateDialogRotateButton()
         {
@@ -95,12 +70,9 @@ namespace ImageProcessorMain.AdjustmentComponents
 
         private void onOkButtonClicked(object sender, EventArgs e)
         {
-            float angle = float.Parse(m_AngleTextbox.Text);
-            AdjustImage(angle);
-            UpdateImage();
+            var flipType = (RotateFlipType)Enum.Parse(typeof(RotateFlipType), m_RotateFlipOptionsListBox.SelectedItem.ToString());
+            AdjustImage(flipType);
             m_RotateDialog.Dispose();
-
-
         }
       
     }
