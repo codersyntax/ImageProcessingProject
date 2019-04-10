@@ -47,7 +47,7 @@ namespace ImageProcessorMain
                         new BlurAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                     case "Filters":
-                        IAdjustment filterAdjustment = new FilterAdjustment(m_ImageHandler, m_ImageHub);
+                        new FilterAdjustment(m_ImageHandler, m_ImageHub);
                         break;
                 }
             }

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
-    internal class BrightnessAdjustment : IAdjustment
+    internal class BrightnessAdjustment 
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;

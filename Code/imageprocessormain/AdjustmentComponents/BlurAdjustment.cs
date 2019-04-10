@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace ImageProcessorMain.AdjustmentComponents
 {
-    internal class BlurAdjustment : IAdjustment
+    internal class BlurAdjustment 
     {
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
