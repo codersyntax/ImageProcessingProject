@@ -84,7 +84,7 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_BlueSlider.Maximum = 255;
             m_BlueSlider.Minimum = 0;
             m_BlueSlider.TickFrequency = 25;
-            m_BlueSlider.ValueChanged += new EventHandler(onBlurSliderValueChanged);
+            m_BlueSlider.ValueChanged += new EventHandler(onBlueSliderValueChanged);
         }
 
         private void CreateDialogGreenTrackBar()
@@ -148,9 +148,13 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_FilterDialog.Dispose();
         }
 
-        private void onBlurSliderValueChanged(object sender, EventArgs e)
+        private void onBlueSliderValueChanged(object sender, EventArgs e)
         {
             m_RedTrackBarValueLabel.Text = "Blue: "+ m_BlueSlider.Value.ToString();
+            Bitmap filteredImage = ColorTint(m_ImageHandler.CurrentBitmap, m_BlueSlider.Value, m_GreenSlider.Value, 255);
+            m_ImageHandler.SetPreviousVersion();
+            m_ImageHandler.CurrentBitmap = filteredImage;
+            UpdateImage();
         }
 
         private void onGreenSliderValueChanged(object sender, EventArgs e)
