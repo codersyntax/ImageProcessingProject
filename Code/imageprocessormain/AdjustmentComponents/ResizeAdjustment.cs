@@ -7,6 +7,7 @@ namespace ImageProcessorMain.AdjustmentComponents
 {
     internal class ResizeAdjustment
     {
+        private Form m_MainForm;
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
         private Form m_ResizeDialog;
@@ -19,7 +20,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         int h_textBox;
 
 
-        internal ResizeAdjustment(ImageHandler imageHandler, ImageHub imageHub)
+        internal ResizeAdjustment(Form mainForm, ImageHandler imageHandler, ImageHub imageHub)
         {
             m_ImageHandler = imageHandler;
             m_ImageHub = imageHub;
@@ -131,6 +132,8 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
             m_ImageHub.m_Image.Width = m_ImageHub.CurrentImage.Image.Width;
             m_ImageHub.m_Image.Height = m_ImageHub.CurrentImage.Image.Height;
+            m_ImageHandler.AddBitMapToStack(m_ImageHandler.CurrentBitmap);
+            m_MainForm.Controls.Find("Undo", true)[0].Enabled = true;
         }
 
         private void CreateDialogOkButton()

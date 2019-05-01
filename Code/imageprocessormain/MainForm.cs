@@ -62,6 +62,7 @@ namespace ImageProcessorMain
                 if (DialogResult.OK == openFileDialog.ShowDialog())
                 {
                     m_ImageHandler.CurrentBitmap = (Bitmap)Bitmap.FromFile(openFileDialog.FileName);
+                    m_ImageHandler.OriginalBitmap = m_ImageHandler.CurrentBitmap;
                     m_ImageHandler.BitmapPath = openFileDialog.FileName;
                     m_ImageHub.CreateImageForm();
                     menuItemSave.Enabled = true;

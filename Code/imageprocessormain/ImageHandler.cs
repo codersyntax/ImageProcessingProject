@@ -11,6 +11,8 @@ namespace ImageProcessorMain
 
         public Stack<Bitmap> undoButtonStack = new Stack<Bitmap>();
 
+        public Bitmap OriginalBitmap { get; set; }
+
         public Bitmap CurrentBitmap
         {
             get

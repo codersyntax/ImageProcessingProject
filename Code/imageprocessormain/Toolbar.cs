@@ -12,7 +12,6 @@ namespace ImageProcessorMain
         private ImageHub m_ImageHub;
         private ImageHandler m_ImageHandler;
         private int buttonSeperator = 0;
-        private bool EnableUndo = false;
 
         public Toolbar(Form mainForm, ImageHub imageHub, ImageHandler imageHandler)
         {
@@ -20,7 +19,7 @@ namespace ImageProcessorMain
             m_ImageHub = imageHub;
             m_ImageHandler = imageHandler;
             AddAdjustmentComponents();
-            AdjustUndoVisibility();
+            m_MainForm.Controls.Find("Undo", true)[0].Enabled = false;
         }
 
         private void AddAdjustmentComponents()
@@ -47,25 +46,19 @@ namespace ImageProcessorMain
                         m_ImageHub.ZoomEnabled = true;
                         break;
                     case "Brightness":
-                        new BrightnessAdjustment(m_ImageHandler, m_ImageHub);
+                        new BrightnessAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
                         break;
                     case "Blur":
-                        new BlurAdjustment(m_ImageHandler, m_ImageHub);
+                        new BlurAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
                         break;
                     case "Contrast":
-                        new ContrastAdjustment(m_ImageHandler, m_ImageHub);
+                        new ContrastAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
                         break;
                     case "Resize":
-                        new ResizeAdjustment(m_ImageHandler, m_ImageHub);
+                        new ResizeAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
                         break;
                     
                 }
-                if(button.Name != "Undo")
-                {
-                    m_ImageHandler.AddBitMapToStack(m_ImageHandler.CurrentBitmap);
-                    EnableUndo = true;                
-                }
-                AdjustUndoVisibility();
             }
         }
 
@@ -79,23 +72,14 @@ namespace ImageProcessorMain
             button.Click += new EventHandler(onClickToolbarButton);
             return button;
         }
-
-        private bool IsUndoEnabled()
-        {
-            return EnableUndo;
-        }
-
-        private void AdjustUndoVisibility()
-        {
-            m_MainForm.Controls.Find("Undo", true)[0].Enabled = IsUndoEnabled();
-        }
         
         private void Undo()
         {
             m_ImageHub.CurrentImage.Image = m_ImageHandler.PopUndoStack();
-            if(m_ImageHandler.undoButtonStack.Count == 0)
+            if (m_ImageHandler.undoButtonStack.Count == 0)
             {
-                EnableUndo = false;
+                m_ImageHub.CurrentImage.Image = m_ImageHandler.OriginalBitmap;
+                m_MainForm.Controls.Find("Undo", true)[0].Enabled = false;
             }            
         }
     }

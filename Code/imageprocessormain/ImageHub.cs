@@ -63,6 +63,9 @@ namespace ImageProcessorMain
         private void onImageClose(object sender, EventArgs e)
         {
             m_ImageHandler.BitmapPath = null;
+            m_ImageHandler.OriginalBitmap = null;
+            m_ImageHandler.CurrentBitmap = null;
+            m_ImageHandler.undoButtonStack = null;
         }
 
         private void CreateImageContainer()

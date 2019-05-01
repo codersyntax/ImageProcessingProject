@@ -12,6 +12,7 @@ namespace ImageProcessorMain.AdjustmentComponents
 {
     internal class ContrastAdjustment
     {
+        private Form m_MainForm;
         private ImageHandler m_ImageHandler;
         private ImageHub m_ImageHub;
         private Form m_ContrastDialog;
@@ -19,8 +20,9 @@ namespace ImageProcessorMain.AdjustmentComponents
         private Label m_TrackBarValueLabel;
         private Button m_OkButton;
 
-        internal ContrastAdjustment(ImageHandler imageHandler, ImageHub imageHub)
+        internal ContrastAdjustment(Form mainForm, ImageHandler imageHandler, ImageHub imageHub)
         {
+            m_MainForm = mainForm;
             m_ImageHandler = imageHandler;
             m_ImageHub = imageHub;
             ShowDialog();
@@ -59,6 +61,8 @@ namespace ImageProcessorMain.AdjustmentComponents
         public void UpdateImage()
         {
             m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+            m_ImageHandler.AddBitMapToStack(m_ImageHandler.CurrentBitmap);
+            m_MainForm.Controls.Find("Undo", true)[0].Enabled = true;
         }
 
         private void CreateDialogTrackBar()
