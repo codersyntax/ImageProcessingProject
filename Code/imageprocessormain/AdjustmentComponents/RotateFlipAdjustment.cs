@@ -37,14 +37,10 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_RotateDialog.MinimizeBox = false;
             m_RotateDialog.MaximizeBox = false;
             m_RotateDialog.StartPosition = FormStartPosition.CenterScreen;
-            m_RotateDialog.Size = new Size(400, 400);
+            m_RotateDialog.Size = new Size(300, 300);
             CreateDialogRotateButton();
             CreateDialogRotateLabel();
-            m_RotateFlipOptionsListBox = new ListBox();
-            foreach (string option in Enum.GetNames(typeof(RotateFlipType)))
-            {
-                m_RotateFlipOptionsListBox.Items.Add(option);
-            }
+            CreateDialogRotateFlipOptionsListbox();
             m_RotateDialog.Controls.Add(m_RotateFlipOptionsListBox);
             m_RotateDialog.Controls.Add(m_RotateButton);
             m_RotateDialog.Controls.Add(m_RotateFlipLabel); 
@@ -60,6 +56,17 @@ namespace ImageProcessorMain.AdjustmentComponents
         {
             m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
         }
+
+        private void CreateDialogRotateFlipOptionsListbox()
+        {
+            m_RotateFlipOptionsListBox = new ListBox();
+            m_RotateFlipOptionsListBox.Left = ((m_RotateDialog.Width - m_RotateFlipOptionsListBox.Width) / 2) + 40;
+            m_RotateFlipOptionsListBox.Top = ((m_RotateDialog.Height - m_RotateButton.Height) / 2) - 80;
+            foreach (string option in Enum.GetNames(typeof(RotateFlipType)))
+            {
+                m_RotateFlipOptionsListBox.Items.Add(option);
+            }
+        }
        
         private void CreateDialogRotateButton()
         {
@@ -73,8 +80,8 @@ namespace ImageProcessorMain.AdjustmentComponents
         private void CreateDialogRotateLabel()
         {
             m_RotateFlipLabel = new Label();
-            m_RotateFlipLabel.Left = (m_RotateDialog.Width - m_RotateFlipLabel.Width) / 2;
-            m_RotateFlipLabel.Top = ((m_RotateDialog.Height - m_RotateFlipLabel.Height) / 2) + 10;
+            m_RotateFlipLabel.Left = m_RotateDialog.Left + 20;
+            m_RotateFlipLabel.Top = ((m_RotateDialog.Height - m_RotateButton.Height) / 2) - 80;
             m_RotateFlipLabel.Text = "Select Rotation Type";
         }
 
