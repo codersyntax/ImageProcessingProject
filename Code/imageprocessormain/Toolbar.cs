@@ -34,7 +34,7 @@ namespace ImageProcessorMain
         private void onClickToolbarButton(object sender, EventArgs e)
         {
             Button button = sender as Button;
-            if (button != null)
+            if (button != null && m_ImageHandler.OriginalBitmap != null)
             {
                 m_ImageHub.ZoomEnabled = false;
                 switch (button.Name)
