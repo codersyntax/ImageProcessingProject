@@ -75,8 +75,12 @@ namespace ImageProcessorMain
         
         private void Undo()
         {
-            m_ImageHub.CurrentImage.Image = m_ImageHandler.PopUndoStack();
-            if (m_ImageHandler.undoButtonStack.Count == 0)
+            if (m_ImageHandler.undoButtonStack.Count > 1)
+            {
+                m_ImageHandler.CurrentBitmap = m_ImageHandler.PopUndoStack();
+                m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
+            }
+            else
             {
                 m_ImageHub.CurrentImage.Image = m_ImageHandler.OriginalBitmap;
                 m_MainForm.Controls.Find("Undo", true)[0].Enabled = false;

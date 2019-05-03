@@ -24,7 +24,7 @@ namespace ImageProcessorMain.AdjustmentComponents
         {
             m_ImageHandler = imageHandler;
             m_ImageHub = imageHub;
-            
+            m_MainForm = mainForm;
             ShowDialog();
         }
 
@@ -130,8 +130,8 @@ namespace ImageProcessorMain.AdjustmentComponents
         public void UpdateImage()
         {
             m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
-            m_ImageHub.m_Image.Width = m_ImageHub.CurrentImage.Image.Width;
-            m_ImageHub.m_Image.Height = m_ImageHub.CurrentImage.Image.Height;
+            //m_ImageHub.m_Image.Width = m_ImageHub.CurrentImage.Image.Width;
+            //m_ImageHub.m_Image.Height = m_ImageHub.CurrentImage.Image.Height;
             m_ImageHandler.AddBitMapToStack(m_ImageHandler.CurrentBitmap);
             m_MainForm.Controls.Find("Undo", true)[0].Enabled = true;
         }

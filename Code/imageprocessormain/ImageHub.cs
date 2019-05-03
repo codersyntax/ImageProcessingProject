@@ -18,22 +18,21 @@ namespace ImageProcessorMain
             m_ImageHandler = imageHandler;
         }
 
-        public Form CreateImageForm()
+        public void CreateImageForm()
         {
-            Form image = new Form();
-            image.Text = m_ImageHandler.BitmapPath;
-            image.Size = new Size(m_ImageHandler.CurrentBitmap.Width, m_ImageHandler.CurrentBitmap.Height);
-            image.StartPosition = FormStartPosition.Manual;
-            image.Location = new Point(136, 0);
-            image.FormBorderStyle = FormBorderStyle.FixedSingle;
-            image.ShowIcon = false;
-            image.BackColor = Color.DarkGray;
+            m_Image = new Form();
+            m_Image.Text = m_ImageHandler.BitmapPath;
+            m_Image.Size = new Size(Screen.PrimaryScreen.Bounds.Width - 150, Screen.PrimaryScreen.Bounds.Height - 100);
+            m_Image.StartPosition = FormStartPosition.Manual;
+            m_Image.Location = new Point(75, 0);
+            m_Image.AutoScroll = true;
+            m_Image.FormBorderStyle = FormBorderStyle.FixedSingle;
+            m_Image.ShowIcon = false;
+            m_Image.BackColor = Color.DarkGray;
             CreateImageContainer();
-            image.Controls.Add(CurrentImage);
-            image.FormClosed += new FormClosedEventHandler(onImageClose);
-            image.Show();
-            m_Image = image;
-            return image;
+            m_Image.Controls.Add(CurrentImage);
+            m_Image.FormClosed += new FormClosedEventHandler(onImageClose);
+            m_Image.Show();
         }
 
         private void onZoomClick(object sender, MouseEventArgs e)
@@ -44,17 +43,17 @@ namespace ImageProcessorMain
                 {
                     if (CurrentImage.Width > 40 && CurrentImage.Height > 40)
                     {
-                        m_Image.Width = Convert.ToInt32(m_Image.Width * 0.95);
-                        m_Image.Height = Convert.ToInt32(m_Image.Height * 0.95);
-                        m_Image.Refresh();
+                        CurrentImage.Width = Convert.ToInt32(CurrentImage.Width * 0.95);
+                        CurrentImage.Height = Convert.ToInt32(CurrentImage.Height * 0.95);
+                        CurrentImage.Refresh();
                         CurrentImage.Update();
                     }
                 }
                 if (e.Button == MouseButtons.Left)
                 {
-                    m_Image.Width = Convert.ToInt32(m_Image.Width * 1.05);
-                    m_Image.Height = Convert.ToInt32(m_Image.Height * 1.05);
-                    m_Image.Refresh();
+                    CurrentImage.Width = Convert.ToInt32(CurrentImage.Width * 1.05);
+                    CurrentImage.Height = Convert.ToInt32(CurrentImage.Height * 1.05);
+                    CurrentImage.Refresh();
                     CurrentImage.Update();
                 }
             }
@@ -71,9 +70,13 @@ namespace ImageProcessorMain
         private void CreateImageContainer()
         {
             CurrentImage = new PictureBox();
-            CurrentImage.Dock = DockStyle.Fill;
+            //CurrentImage.Dock = DockStyle.Fill;
+            CurrentImage.Left = m_Image.Left;
+            CurrentImage.Top = m_Image.Top;
+            CurrentImage.Width = m_Image.Width;
+            CurrentImage.Height = m_Image.Height;
             CurrentImage.Image = m_ImageHandler.CurrentBitmap;
-            CurrentImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            CurrentImage.SizeMode = PictureBoxSizeMode.Zoom;
             CurrentImage.MouseUp += onZoomClick;
         }
     }

@@ -56,7 +56,15 @@ namespace ImageProcessorMain
 
         public Bitmap PopUndoStack()
         {
-            return undoButtonStack.Pop();
+            undoButtonStack.Pop();
+            if (undoButtonStack.Count > 0)
+            {
+                return undoButtonStack.Peek();
+            }
+            else
+            {
+                return OriginalBitmap;
+            }
         }
 
 
