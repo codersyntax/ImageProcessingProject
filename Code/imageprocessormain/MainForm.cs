@@ -15,7 +15,7 @@ namespace ImageProcessorMain
         public MainForm()
         {
             InitializeComponent();
-            MaximizedBounds = new Rectangle(0,0,100, 320);
+            MaximizedBounds = new Rectangle(0,0,100, 360);
             InitComponents();
             InitDialogs();
         }
