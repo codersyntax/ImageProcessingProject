@@ -36,7 +36,6 @@ namespace ImageProcessorMain.AdjustmentComponents
             float redValue = (float)m_RedSlider.Value / 255;
 
             Bitmap filteredImage = ColorTint(m_ImageHandler.CurrentBitmap, blueValue, greenValue, redValue);
-            m_ImageHandler.SetPreviousVersion();
             m_ImageHandler.CurrentBitmap = filteredImage;
             UpdateImage();
             Cursor.Current = Cursors.Default;
@@ -67,7 +66,7 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_FilterDialog.Controls.Add(m_RedSlider);
             m_FilterDialog.Controls.Add(m_RedBarValueLabel);
             m_FilterDialog.Controls.Add(m_OkButton);
-
+            m_FilterDialog.FormClosed += new FormClosedEventHandler(onFilterDialogClose);
             m_FilterDialog.Show();
             return m_FilterDialog;
         }
@@ -77,6 +76,23 @@ namespace ImageProcessorMain.AdjustmentComponents
             m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
             m_ImageHandler.AddBitMapToStack(m_ImageHandler.CurrentBitmap);
             m_MainForm.Controls.Find("Undo", true)[0].Enabled = true;
+        }
+
+        public void PreviewImage()
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            float blueValue = (float)m_BlueSlider.Value / 255;
+            float greenValue = (float)m_GreenSlider.Value / 255;
+            float redValue = (float)m_RedSlider.Value / 255;
+
+            Bitmap filteredImage = ColorTint(m_ImageHandler.CurrentBitmap, blueValue, greenValue, redValue);
+            m_ImageHub.CurrentImage.Image = filteredImage;
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void onFilterDialogClose(object sender, EventArgs e)
+        {
+            m_ImageHub.CurrentImage.Image = m_ImageHandler.CurrentBitmap;
         }
 
         private void CreateDialogBlueTrackBar()
@@ -155,16 +171,19 @@ namespace ImageProcessorMain.AdjustmentComponents
         private void onBlueSliderValueChanged(object sender, EventArgs e)
         {
             m_RedTrackBarValueLabel.Text = "Blue: " + m_BlueSlider.Value.ToString();
+            PreviewImage();
         }
 
         private void onGreenSliderValueChanged(object sender, EventArgs e)
         {
             m_GreenBarValueLabel.Text = "Green: " + m_GreenSlider.Value.ToString();
+            PreviewImage();
         }
 
         private void onRedSliderValueChanged(object sender, EventArgs e)
         {
             m_RedBarValueLabel.Text = "Red: " + m_RedSlider.Value.ToString();
+            PreviewImage();
         }
 
         private Bitmap ColorTint(Bitmap sourceBitmap, float blueTint, float greenTint, float redTint)
