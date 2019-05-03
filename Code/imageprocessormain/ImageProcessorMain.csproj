@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ImageProcessorMain</RootNamespace>
     <AssemblyName>ImageProcessorMain</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -51,6 +51,7 @@
     <Compile Include="AdjustmentComponents\CropAdjustment.cs" />
     <Compile Include="AdjustmentComponents\FilterAdjustment.cs" />
     <Compile Include="AdjustmentComponents\ResizeAdjustment.cs" />
+    <Compile Include="AdjustmentComponents\RotateFlipAdjustment.cs" />
     <Compile Include="ImageHub.cs" />
     <Compile Include="AdjustmentComponents\BrightnessAdjustment.cs" />
     <Compile Include="Constants\Constants.cs" />
