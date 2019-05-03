@@ -10,6 +10,7 @@ namespace ImageProcessorMain
         private ImageHandler m_ImageHandler;
         public Form m_Image;
         public PictureBox CurrentImage;
+        private SaveFileDialog m_SaveFileDialog;
         public bool ZoomEnabled = false;
 
         public ImageHub(Form mainForm, ImageHandler imageHandler)
@@ -24,7 +25,7 @@ namespace ImageProcessorMain
             m_Image.Text = m_ImageHandler.BitmapPath;
             m_Image.Size = new Size(Screen.PrimaryScreen.Bounds.Width - 150, Screen.PrimaryScreen.Bounds.Height - 100);
             m_Image.StartPosition = FormStartPosition.Manual;
-            m_Image.Location = new Point(75, 0);
+            m_Image.Location = new Point(100, 0);
             m_Image.AutoScroll = true;
             m_Image.FormBorderStyle = FormBorderStyle.FixedSingle;
             m_Image.ShowIcon = false;
@@ -35,32 +36,19 @@ namespace ImageProcessorMain
             m_Image.Show();
         }
 
-        private void onZoomClick(object sender, MouseEventArgs e)
-        {
-            if (ZoomEnabled)
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    if (CurrentImage.Width > 40 && CurrentImage.Height > 40)
-                    {
-                        CurrentImage.Width = Convert.ToInt32(CurrentImage.Width * 0.95);
-                        CurrentImage.Height = Convert.ToInt32(CurrentImage.Height * 0.95);
-                        CurrentImage.Refresh();
-                        CurrentImage.Update();
-                    }
-                }
-                if (e.Button == MouseButtons.Left)
-                {
-                    CurrentImage.Width = Convert.ToInt32(CurrentImage.Width * 1.05);
-                    CurrentImage.Height = Convert.ToInt32(CurrentImage.Height * 1.05);
-                    CurrentImage.Refresh();
-                    CurrentImage.Update();
-                }
-            }
-        }
-
         private void onImageClose(object sender, EventArgs e)
         {
+            m_SaveFileDialog = new SaveFileDialog
+            {
+                RestoreDirectory = true,
+                InitialDirectory = Constants.InitialDirectory,
+                FilterIndex = 1,
+                Filter = Constants.FilterString
+            };
+            if (DialogResult.OK == m_SaveFileDialog.ShowDialog())
+            {
+                m_ImageHandler.SaveBitmap(m_SaveFileDialog.FileName);
+            }
             m_ImageHandler.BitmapPath = null;
             m_ImageHandler.OriginalBitmap = null;
             m_ImageHandler.CurrentBitmap = null;
@@ -73,11 +61,10 @@ namespace ImageProcessorMain
             //CurrentImage.Dock = DockStyle.Fill;
             CurrentImage.Left = m_Image.Left;
             CurrentImage.Top = m_Image.Top;
-            CurrentImage.Width = m_Image.Width;
-            CurrentImage.Height = m_Image.Height;
+            CurrentImage.Width = m_ImageHandler.CurrentBitmap.Width;
+            CurrentImage.Height = m_ImageHandler.CurrentBitmap.Height;
             CurrentImage.Image = m_ImageHandler.CurrentBitmap;
             CurrentImage.SizeMode = PictureBoxSizeMode.Zoom;
-            CurrentImage.MouseUp += onZoomClick;
         }
     }
 }

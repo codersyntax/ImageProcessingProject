@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.MainMenu1 = new System.Windows.Forms.MainMenu(this.components);
+            this.MainMenu = new System.Windows.Forms.MainMenu(this.components);
             this.menuItemFile = new System.Windows.Forms.MenuItem();
-            this.menuItemOpen = new System.Windows.Forms.MenuItem();
+            this.openMenuItem = new System.Windows.Forms.MenuItem();
             this.menuItemSave = new System.Windows.Forms.MenuItem();
             this.menuItemColor = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
-            // MainMenu1
+            // MainMenu
             // 
-            this.MainMenu1.Name = "MainMenu";
-            this.MainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.MainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItemFile,
             this.menuItemColor});
             // 
@@ -47,17 +46,16 @@
             // 
             this.menuItemFile.Index = 0;
             this.menuItemFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItemOpen,
+            this.openMenuItem,
             this.menuItemSave});
             this.menuItemFile.Text = "&File";
             // 
-            // menuItemOpen
+            // openMenuItem
             // 
-            this.menuItemOpen.Index = 0;
-            this.menuItemOpen.Name = "openMenuItem";
-            this.menuItemOpen.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
-            this.menuItemOpen.Text = "&Open";
-            this.menuItemOpen.Click += new System.EventHandler(this.menuItemOpen_Click);
+            this.openMenuItem.Index = 0;
+            this.openMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
+            this.openMenuItem.Text = "&Open";
+            this.openMenuItem.Click += new System.EventHandler(this.menuItemOpen_Click);
             // 
             // menuItemSave
             // 
@@ -77,10 +75,10 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(94, 294);
+            this.ClientSize = new System.Drawing.Size(149, 274);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
-            this.Menu = this.MainMenu1;
+            this.Menu = this.MainMenu;
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -98,6 +96,8 @@
         private System.Windows.Forms.MenuItem menuItemOpen;
         private System.Windows.Forms.MenuItem menuItemSave;
         private System.Windows.Forms.MenuItem menuItemColor;
+        private System.Windows.Forms.MainMenu MainMenu;
+        private System.Windows.Forms.MenuItem openMenuItem;
     }
 }
 
