@@ -25,7 +25,7 @@ namespace ImageProcessorMain
         private void AddAdjustmentComponents()
         {
             m_MainForm.Controls.Add(createZoomSlider());
-            List<string> m_Adjustments = new List<string> { "Undo", "Brightness", "Blur", "Contrast", "Resize" };
+            List<string> m_Adjustments = new List<string> { "Undo", "Brightness", "Contrast", "Resize", "Filter", "Blur" };
             foreach(string adjustment in m_Adjustments)
             {
                 m_MainForm.Controls.Add(createButton(adjustment));
@@ -45,16 +45,18 @@ namespace ImageProcessorMain
                     case "Brightness":
                         new BrightnessAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
                         break;
-                    case "Blur":
-                        new BlurAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
-                        break;
                     case "Contrast":
                         new ContrastAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
                         break;
                     case "Resize":
                         new ResizeAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
                         break;
-
+                    case "Filter":
+                        new FilterAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
+                        break;
+                    case "Blur":
+                        new BlurAdjustment(m_MainForm, m_ImageHandler, m_ImageHub);
+                        break;
                 }
             }
         }
